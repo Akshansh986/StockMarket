@@ -1,23 +1,23 @@
 import numpy as np
 import json
 
+
 class Market:
     def __init__(self, data):
         self.data = data
         self.time = -1
 
-    def getTime(self):
+    def get_time(self):
         return self.time
 
     def tick(self):
         self.time = self.time + 1
-        if (self.time >= len(self.data)):
-            return False
+        return False if self.time >= len(self.data) else True
 
-    def getPrice(self):
+    def get_price(self):
         return self.data[self.time]
 
-    def getLastPrice(self):
+    def get_last_price(self):
         return self.data[self.time - 1]
 
 
@@ -28,33 +28,33 @@ class Account:
         self.lastPurchasePrice = -1
         self.lastSoldPrice = -1
 
-    def depositAmount(self, amount):
+    def deposit_amount(self, amount):
         # print("Deposited Amount " + str(amount))
         self.balance = self.balance + amount
         # self.printStatement()
 
-    def withdrawAmount(self, amount):
-        if (amount > self.balance):
+    def withdraw_amount(self, amount):
+        if amount > self.balance:
             raise Exception("Sorry, insufficient balance!!!")
             # print("withdrawAmount " + str(amount))
         self.balance = self.balance - amount
         # self.printStatement()
 
-    def buyStock(self, stockPrice):
+    def buy_stock(self, stockPrice):
         # print("Buy Stock at " + str(stockPrice))
         self.stock = self.stock + (self.balance / stockPrice)
         self.balance = 0
         self.lastPurchasePrice = stockPrice
         # self.printStatement()
 
-    def sellStock(self, stockPrice):
+    def sell_stock(self, stockPrice):
         # print("Sell Stock at " + str(stockPrice))
         self.balance = self.balance + (stockPrice * self.stock)
         self.stock = 0
         self.lastSoldPrice = stockPrice
         # self.printStatement()
 
-    def printStatement(self):
+    def print_statement(self):
         print("-------------")
         print("Bank Balance " + str(self.balance))
         print("Stocks " + str(self.stock))
@@ -63,21 +63,21 @@ class Account:
         print("-------------")
         print("")
 
-    def getBalance(self):
+    def get_balance(self):
         return self.balance
 
-    def getStock(self):
+    def get_stock(self):
         return self.stock
 
-    def getLastPurchasePrice(self):
+    def get_last_purchase_price(self):
         return self.lastPurchasePrice
 
-    def getLastSoldPrice(self):
+    def get_last_sold_price(self):
         return self.lastSoldPrice
 
 
-def getStockData():
-    with open('icici.json') as f:
+def get_stock_data():
+    with open('../data/icici/icici.json') as f:
         data = json.load(f)
     p = data['chart']['result'][0]['indicators']['quote'][0]['close']
     price = np.asarray(p)
@@ -86,40 +86,40 @@ def getStockData():
     return price1.tolist()
 
 
-def evaluate(startTime):
-    market = Market(getStockData())
+def evaluate(start_time):
+    market = Market(get_stock_data())
     account = Account()
-    account.depositAmount(50000)
+    account.deposit_amount(50000)
 
     while True:
-        marketOpened = market.tick()
-        if (marketOpened == False):
+        market_opened = market.tick()
+        if not market_opened:
             break
 
-        price = market.getPrice()
-        lastPrice = market.getLastPrice();
+        price = market.get_price()
+        last_price = market.get_last_price();
 
-        if (market.getTime() == startTime):
+        if market.get_time() == start_time:
             # print("Purchasing stock at " + str(price))
-            account.buyStock(price)
+            account.buy_stock(price)
             continue
 
-        if (market.getTime() > startTime):
-            if account.getStock() > 0:
-                diff = price - account.getLastPurchasePrice()
-                if (diff <= -.1):
-                    account.sellStock(price)
-                elif (diff >= 4):
-                    account.sellStock(price)
+        if market.get_time() > start_time:
+            if account.get_stock() > 0:
+                difference = price - account.get_last_purchase_price()
+                if difference <= -.1:
+                    account.sell_stock(price)
+                elif difference >= 4:
+                    account.sell_stock(price)
                     print("Purchase done!!!")
                     break
             else:
-                diff = price - account.getLastPurchasePrice()
-                if (diff >= 0):
-                    account.buyStock(price)
+                difference = price - account.get_last_purchase_price()
+                if difference >= 0:
+                    account.buy_stock(price)
 
-    account.printStatement()
-    return account.getBalance()
+    account.print_statement()
+    return account.get_balance()
 
 
 profit = 0
