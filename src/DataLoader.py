@@ -76,7 +76,3 @@ class DataLoader:
         dv.verify_data(transform_data)
         return transform_data
 
-
-dl = DataLoader()
-data = dl.load_data("../data/icici/")
-print(data)

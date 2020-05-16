@@ -1,24 +1,27 @@
-import numpy as np
-import json
+from DataLoader import DataLoader
 
 
 class Market:
-    def __init__(self, data):
-        self.data = data
-        self.time = -1
+    def __init__(self, date_price):
+        self.date_price = date_price
+        self.time_price_list = date_price.get_time_price_list()
+        self.cur_index = -1
+
+    def get_date(self):
+        return date_price.get_date()
 
     def get_time(self):
-        return self.time
+        return self.time_price_list[self.cur_index].get_time()
 
     def tick(self):
-        self.time = self.time + 1
-        return False if self.time >= len(self.data) else True
+        self.cur_index = self.cur_index + 1
+        return False if self.cur_index >= len(self.time_price_list) else True
 
     def get_price(self):
-        return self.data[self.time]
+        return self.time_price_list[self.cur_index].get_price()
 
     def get_last_price(self):
-        return self.data[self.time - 1]
+        return self.time_price_list[self.cur_index-1].get_price()
 
 
 class Account:
@@ -76,18 +79,7 @@ class Account:
         return self.lastSoldPrice
 
 
-def get_stock_data():
-    with open('../data/icici/icici.json') as f:
-        data = json.load(f)
-    p = data['chart']['result'][0]['indicators']['quote'][0]['close']
-    price = np.asarray(p)
-    price = price[price.astype(bool)]
-    price1 = price[10:]
-    return price1.tolist()
-
-
-def evaluate(start_time):
-    market = Market(get_stock_data())
+def evaluate(market,  start_time):
     account = Account()
     account.deposit_amount(50000)
 
@@ -97,6 +89,8 @@ def evaluate(start_time):
             break
 
         price = market.get_price()
+        if price is None:
+            continue
         last_price = market.get_last_price();
 
         if market.get_time() == start_time:
@@ -111,27 +105,41 @@ def evaluate(start_time):
                     account.sell_stock(price)
                 elif difference >= 4:
                     account.sell_stock(price)
-                    print("Purchase done!!!")
+                    # print("Purchase done!!!")
                     break
             else:
                 difference = price - account.get_last_purchase_price()
                 if difference >= 0:
                     account.buy_stock(price)
 
+    print("Evaluation for ", market.get_date(), "Start time", start_time)
     account.print_statement()
     return account.get_balance()
 
 
+
+
+
+dl = DataLoader()
+date_price_list = dl.load_data("../data/icici/")
+
+# for start_time in range(50, 250):
 profit = 0
 loss = 0
-for i in range(1, 365):
-    balance = evaluate(i)
-    diff = balance - 50000
-    if diff > 0:
-        profit += diff
-    else:
-        loss += diff
+for date_price in date_price_list:
+    evaluate(Market(date_price), date_price.get_time_price_list()[50].get_time())
 
-print("Total Profit " + str(profit))
-print("Total loss " + str(loss))
-print("Net " + str(profit + loss))
+
+# profit = 0
+# loss = 0
+# for i in range(1, 365):
+#     balance = evaluate(i)
+#     diff = balance - 50000
+#     if diff > 0:
+#         profit += diff
+#     else:
+#         loss += diff
+#
+# print("Total Profit " + str(profit))
+# print("Total loss " + str(loss))
+# print("Net " + str(profit + loss))
