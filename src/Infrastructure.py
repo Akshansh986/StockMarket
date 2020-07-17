@@ -18,10 +18,26 @@ class DayMarket:
         return self.time_price_list[self.cur_index].get_price()
 
     def get_last_price(self):
-        return self.time_price_list[self.cur_index-1].get_price()
+        return self.time_price_list[self.cur_index - 1].get_price()
 
     def get_market_close_price(self):
         return self.time_price_list[-1].get_price()
+
+
+class Market:
+    def __init__(self, price_list):
+        self.price_list = price_list
+        self.cur_index = -1
+
+    def tick(self):
+        self.cur_index = self.cur_index + 1
+        return False if self.cur_index >= len(self.price_list) else True
+
+    def get_price(self):
+        return self.price_list[self.cur_index]
+
+    def get_market_close_price(self):
+        return self.price_list[-1]
 
 
 class Account:
@@ -30,6 +46,7 @@ class Account:
         self.stock = 0
         self.lastPurchasePrice = -1
         self.lastSoldPrice = -1
+        self.numTrades = 0
 
     def deposit_amount(self, amount):
         self.balance = self.balance + amount
@@ -52,6 +69,7 @@ class Account:
             self.balance = self.balance + (stockPrice * self.stock)
             self.stock = 0
             self.lastSoldPrice = stockPrice
+            self.numTrades = self.numTrades + 1
 
     def print_statement(self):
         print("-------------")
@@ -72,3 +90,5 @@ class Account:
     def get_last_sold_price(self):
         return self.lastSoldPrice
 
+    def get_num_trades(self):
+        return self.numTrades

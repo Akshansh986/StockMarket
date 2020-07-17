@@ -1,24 +1,9 @@
 from DataLoader import DataLoader
 from Infrastructure import *
+from Util import *
 
 
-class Util(object):
-    def flatten(self, date_price_list):
-        print("Flattening data")
-        result = []
-        for date_price in date_price_list:
-            for time_price in date_price.get_time_price_list():
-                result.append(time_price.get_price())
-
-        filtered_result = [x for x in result if x is not None]
-        print("Total data ponits : " + str(len(result)))
-        print("Final data points after null filter : " + str(len(filtered_result)))
-        return filtered_result
-
-
-
-
-def start_trading(market, account, max_price, min_price):
+def start_trading(market, account, buy_price, sell_price):
     while True:
         market_opened = market.tick()
         if not market_opened:
@@ -28,24 +13,46 @@ def start_trading(market, account, max_price, min_price):
         if price is None:
             continue
 
+        if market.get_price() <= buy_price and account.get_balance() > 0:
+            # print ("Buying at :", market.get_price())
+            account.buy_stock(market.get_price())
+            # account.print_statement()
+
+        if market.get_price() >= sell_price and account.get_stock() > 0:
+            # print("Selling at : ", market.get_price())
+            account.sell_stock(market.get_price())
+            # account.print_statement()
+
+    account.sell_stock(account.get_last_purchase_price())
 
 
+dl = DataLoader()
+util = Util()
+date_price_list = dl.load_data("../data/icici/")
+flattened_prices = util.flatten(date_price_list)
+max_price = int(max(flattened_prices))
+min_price = int(min(flattened_prices))
+print( "Min Price", min_price, "Max Price", max_price)
 
 
+# start_trading(market, account, 345, 360)
+# account.print_statement()
 
-# dl = DataLoader()
-# util = Util()
-# date_price_list = dl.load_data("../data/icici/")
-# account = Account()
-#
-# account.deposit_amount(50000)
-# flattened_prices = util.flatten(date_price_list)
-# max_price = max(flattened_prices)
-# min_price = min(flattened_prices)
-#
-# for date_price in date_price_list:
-#     market = Market(date_price)
-#     start_trading(market, account, max_price, min_price)
+optimal_buy = 0
+optimal_sell = 0
+optimal_num_trades = 0
+max_profit = 0
+for buy_price in range(min_price, max_price):
+    for sell_price in range(min_price, max_price):
+        account = Account()
+        account.deposit_amount(100000)
+        market = Market(flattened_prices)
 
-    # print("Statement after:", date_price.get_date(), "StartTime:", start_time)
-    # account.print_statement()
+        start_trading(market, account, buy_price, sell_price)
+        if account.get_balance() > max_profit:
+            optimal_buy = buy_price
+            optimal_sell = sell_price
+            max_profit = account.get_balance()
+            optimal_num_trades = account.get_num_trades()
+
+print("Max Profit : ", max_profit, ", Buy at : ", optimal_buy, ", Sell at : ", optimal_sell, ", Num trades : ", optimal_num_trades)
