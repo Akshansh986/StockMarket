@@ -1,1 +1,17 @@
-https://query1.finance.yahoo.com/v8/finance/chart/ICICIBANK.NS?symbol=ICICIBANK.NS&period1=1594821299&period2=1594994099&interval=1m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+2 Month
+https://query1.finance.yahoo.com/v8/finance/chart/ICICIBANK.NS?symbol=ICICIBANK.NS&period1=1589846400&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/AXISBANK.NS?symbol=AXISBANK.NS&period1=1589846400&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/HDFCBANK.NS?symbol=HDFCBANK.NS&period1=1589846400&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/ITC.NS?symbol=ITC.NS&period1=1589846400&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+
+1 Month
+https://query1.finance.yahoo.com/v8/finance/chart/ICICIBANK.NS?symbol=ICICIBANK.NS&period1=1592352000&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/AXISBANK.NS?symbol=AXISBANK.NS&period1=1592352000&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/HDFCBANK.NS?symbol=HDFCBANK.NS&period1=1592352000&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/ITC.NS?symbol=ITC.NS&period1=1592352000&period2=1594944000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+
+1a Month
+https://query1.finance.yahoo.com/v8/finance/chart/ICICIBANK.NS?symbol=ICICIBANK.NS&period1=1589846400&period2=1592352000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/AXISBANK.NS?symbol=AXISBANK.NS&period1=1589846400&period2=1592352000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/HDFCBANK.NS?symbol=HDFCBANK.NS&period1=1589846400&period2=1592352000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com
+https://query1.finance.yahoo.com/v8/finance/chart/ITC.NS?symbol=ITC.NS&period1=1589846400&period2=1592352000&interval=5m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com

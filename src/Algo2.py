@@ -32,18 +32,13 @@ date_price_list = dl.load_data("../data/icici/")
 flattened_prices = util.flatten(date_price_list)
 max_price = int(max(flattened_prices))
 min_price = int(min(flattened_prices))
-print( "Min Price", min_price, "Max Price", max_price)
-
-
-# start_trading(market, account, 345, 360)
-# account.print_statement()
 
 optimal_buy = 0
 optimal_sell = 0
 optimal_num_trades = 0
 max_profit = 0
 for buy_price in range(min_price, max_price):
-    for sell_price in range(min_price, max_price):
+    for sell_price in range(buy_price, max_price):
         account = Account()
         account.deposit_amount(100000)
         market = Market(flattened_prices)
@@ -55,4 +50,5 @@ for buy_price in range(min_price, max_price):
             max_profit = account.get_balance()
             optimal_num_trades = account.get_num_trades()
 
-print("Max Profit : ", max_profit, ", Buy at : ", optimal_buy, ", Sell at : ", optimal_sell, ", Num trades : ", optimal_num_trades)
+print("Min Price", min_price, "Max Price", max_price)
+print("Final Balance : ", max_profit, ", Buy at : ", optimal_buy, ", Sell at : ", optimal_sell, ", Num trades : ", optimal_num_trades)

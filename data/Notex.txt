@@ -1,0 +1,51 @@
+ICICI :
+1a month :
+Min Price 286 Max Price 373
+Final Balance :  130504.2977799279 , Buy at :  348 , Sell at :  370 , Num trades :  3
+
+1 month :
+Min Price 337 Max Price 378
+Final Balance :  124161.06138524067 , Buy at :  340 , Sell at :  376 , Num trades :  2
+
+2 month :
+Min Price 286 Max Price 378
+Final Balance :  151638.32486622813 , Buy at :  340 , Sell at :  373 , Num trades :  3
+
+HDFC :
+1a month :
+Min Price 828 Max Price 1061
+Final Balance :  130915.42774473918 , Buy at :  995 , Sell at :  1041 , Num trades :  3
+
+1 month :
+Min Price 972 Max Price 1127
+Final Balance :  117896.83772538792 , Buy at :  1081 , Sell at :  1081 , Num trades :  14
+
+2 months :
+Min Price 828 Max Price 1127
+Final Balance :  141745.87253779802 , Buy at :  936 , Sell at :  1061 , Num trades :  2
+
+Axis :
+1a month :
+Min Price 334 Max Price 442
+Final Balance :  132143.92232260187 , Buy at :  335 , Sell at :  439 , Num trades :  1
+
+1 month :
+Min Price 381 Max Price 460
+Final Balance :  133199.56922039576 , Buy at :  423 , Sell at :  426 , Num trades :  12
+
+2 month :
+Min Price 334 Max Price 460
+Final Balance :  149911.71134756753 , Buy at :  417 , Sell at :  427 , Num trades :  8
+
+ITC:
+1a month :
+Min Price 165 Max Price 205
+Final Balance :  133016.1622951018 , Buy at :  199 , Sell at :  202 , Num trades :  6
+
+1 month :
+Min Price 180 Max Price 208
+Final Balance :  118818.92075800587 , Buy at :  195 , Sell at :  205 , Num trades :  3
+
+2 month :
+Min Price 165 Max Price 208
+Final Balance :  141030.65033284185 , Buy at :  196 , Sell at :  204 , Num trades :  5
