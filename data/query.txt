@@ -1,0 +1,1 @@
+https://query1.finance.yahoo.com/v8/finance/chart/ICICIBANK.NS?symbol=ICICIBANK.NS&period1=1594821299&period2=1594994099&interval=1m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-IN&region=IN&crumb=Dp60ggX1Wcg&corsDomain=in.finance.yahoo.com

@@ -57,7 +57,8 @@ class DataFetcher:
 
 
 class DataVerifier:
-    MINUTES_DURING_MARKET_OPEN = 375
+    MINUTES_DURING_MARKET_OPEN = 75     #5 Min granularity
+    # MINUTES_DURING_MARKET_OPEN = 375  #1 Min granularity
 
     def verify_data(self, date_price_list):
         for date_price in date_price_list:

@@ -116,7 +116,7 @@ account = Account()
 account.deposit_amount(50000)
 for date_price in date_price_list:
     market = Market(date_price)
-    start_time = date_price.get_time_price_list()[91].get_time()
+    start_time = date_price.get_time_price_list()[10].get_time()
 
     start_trading(market, start_time, account)
 
